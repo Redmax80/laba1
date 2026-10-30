@@ -1,0 +1,46 @@
+Фактический вывод dbms-go: отдельный процесс на каждый запрос
+
+$ --query 'MPUSH scores 8'
+8
+$ --query 'MPUSH scores 12'
+12
+$ --query 'MINSERT scores 1 10'
+10
+$ --query 'PRINT scores'
+8 10 12
+$ --query 'FINSERTHEAD route A'
+A
+$ --query 'FINSERTTAIL route B'
+B
+$ --query 'FINSERTAFTER route A C'
+C
+$ --query 'FREAD route'
+A C B
+$ --query 'FDELBEFORE route B'
+C
+$ --query 'FREAD route REVERSE'
+B A
+$ --query 'LINSERTHEAD history A'
+A
+$ --query 'LINSERTTAIL history B'
+B
+$ --query 'LINSERTBEFORE history B C'
+C
+$ --query 'LREAD history REVERSE'
+B C A
+$ --query 'SPUSH undo A'
+A
+$ --query 'SPUSH undo B'
+B
+$ --query 'SPOP undo'
+B
+$ --query 'SREAD undo'
+A
+$ --query 'QPUSH tasks A'
+A
+$ --query 'QPUSH tasks B'
+B
+$ --query 'QPOP tasks'
+A
+$ --query 'QREAD tasks'
+B
